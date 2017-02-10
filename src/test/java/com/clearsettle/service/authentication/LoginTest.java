@@ -1,5 +1,6 @@
 package com.clearsettle.service.authentication;
 
+import com.clearsettle.model.authentication.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.internal.exceptions.ExceptionIncludingMockitoWarnings;
@@ -28,11 +29,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @SpringBootTest
 public class LoginTest {
 
-    @Value("${email}")
-    private String email;
-
-    @Value("${password}")
-    private String password;
+    @Autowired
+    private User user;
 
     @Autowired
     private MockMvc mockMvc;
@@ -41,15 +39,11 @@ public class LoginTest {
     public void login() {
 
         try {
-            ResultActions resultActions = mockMvc.perform(post("/login").param("email", email).param("password", password));
-            int deneme = 1;
-
-
+            ResultActions resultActions = mockMvc.perform(post("/login").param("email", user.getEmail()).param("password", user.getPassword()));
 
         } catch (Exception e){
             assert false;
         }
-
 
     }
 

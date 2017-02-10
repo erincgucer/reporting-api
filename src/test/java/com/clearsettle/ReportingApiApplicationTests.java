@@ -11,14 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ReportingApiApplicationTests {
 
-	@Autowired
-	private LoginTest loginTest;
-
-
 	@Test
 	public void contextLoads() {
-
-		loginTest.login();
 
 	}
 
