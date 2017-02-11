@@ -3,7 +3,7 @@ package com.clearsettle.controller.transaction;
 import com.clearsettle.model.transaction.ReportRequest;
 import com.clearsettle.model.transaction.ReportResponse;
 import com.clearsettle.service.transaction.ITransactionServices;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

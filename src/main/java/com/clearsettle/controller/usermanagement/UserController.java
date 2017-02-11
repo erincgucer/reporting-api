@@ -5,7 +5,7 @@ import com.clearsettle.model.usermanagement.ClientResponse;
 import com.clearsettle.model.usermanagement.MerchantRequest;
 import com.clearsettle.model.usermanagement.MerchantResponse;
 import com.clearsettle.service.usermanagement.IUserServices;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,8 @@
-package com.clearsettle.service.authentication;
+package com.clearsettle.service.transaction;
 
+import com.clearsettle.model.authentication.AuthenticationToken;
 import com.clearsettle.model.authentication.User;
+import com.clearsettle.service.authentication.IAuthenticationServices;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +14,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 /**
- * Created by egucer on 09-Feb-17.
+ * Created by egucer on 11-Feb-17.
  */
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class LoginTest {
+public class TransactionTest {
+
+    @Autowired
+    private IAuthenticationServices authenticationServices;
 
     @Autowired
     private User user;
@@ -26,9 +31,11 @@ public class LoginTest {
     private MockMvc mockMvc;
 
     @Test
-    public void login() throws Exception {
+    public void report() throws Exception {
 
-        mockMvc.perform(get("/login").param("email", user.getEmail()).param("password", user.getPassword())).andExpect(jsonPath("token").isNotEmpty());
+        AuthenticationToken authenticationToken = authenticationServices.login(user);
+
+        mockMvc.perform(get("/report").param("fromDate", "2010-10-10").param("toDate", "2016-11-11").param("merchant", "1").param("acquirer", "2")
+                .header("Authorization", authenticationToken.getToken())).andExpect(jsonPath("status").value("APPROVED"));
     }
-
 }

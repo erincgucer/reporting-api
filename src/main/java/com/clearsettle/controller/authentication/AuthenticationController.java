@@ -3,7 +3,7 @@ package com.clearsettle.controller.authentication;
 import com.clearsettle.model.authentication.AuthenticationToken;
 import com.clearsettle.model.authentication.User;
 import com.clearsettle.service.authentication.IAuthenticationServices;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class AuthenticationController {
     private User user;
 
     @GetMapping(value = "/login")
-    public ResponseEntity login(HttpServletRequest request) {
+    public ResponseEntity login(HttpServletRequest  request) {
 
         try {
             AuthenticationToken authenticationToken = authenticationServices.login(user);
